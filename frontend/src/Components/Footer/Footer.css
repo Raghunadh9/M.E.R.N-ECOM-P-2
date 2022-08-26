@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  margin-top: 10vmax;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+}
+.footer_left {
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer_left > p {
+  text-align: center;
+}
+.footer_left > img {
+  width: 10vmax;
+  margin: 1vmax;
+  cursor: pointer;
+}

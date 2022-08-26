@@ -1,0 +1,45 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+import Badge from "@material-ui/core/Badge";
+import SearchIcon from "@mui/icons-material/Search";
+import Person3Icon from "@mui/icons-material/Person3";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import "./Navbar.css";
+
+const Navbar = () => {
+  return (
+    <div>
+      <div className="navbar_container">
+        <div className="navbar_wrapper">
+          <div className="navbar_left">
+            <h1>FPASSIONN.</h1>
+          </div>
+          <div className="navbar_center">
+            <div className="navbar_menuItem">
+              <Link to="/">Home</Link>
+            </div>
+            <div className="navbar_menuItem">Products</div>
+            <div className="navbar_menuItem">Contact</div>
+            <div className="navbar_menuItem">About</div>
+          </div>
+          <div className="navbar_right">
+            <div className="navbar_menuItem">
+              <SearchIcon fontSize="medium" />
+            </div>
+            <div className="navbar_menuItem">
+              <Person3Icon fontSize="medium" />
+            </div>
+            <div className="navbar_menuItem">
+              <Badge badgeContent={4} color="error">
+                <ShoppingCartOutlinedIcon fontSize="medium" />
+              </Badge>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
