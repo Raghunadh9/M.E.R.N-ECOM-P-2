@@ -1,100 +1,135 @@
 import React from "react";
-import "./Footer.css";
-import "./bootstrap.css";
-const Footer = () => {
-  const today = new Date().getFullYear;
+import styled from "styled-components";
+const thisYear = new Date().getFullYear();
 
+const Container = styled.div`
+  display: flex;
+`;
+
+const Left = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`;
+
+const Logo = styled.h1``;
+
+const Desc = styled.p`
+  margin: 20px 0px;
+`;
+
+const SocialContainer = styled.div`
+  display: flex;
+`;
+
+const SocialIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  background-color: #${(props) => props.color};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+`;
+
+const Center = styled.div`
+  flex: 1;
+  padding: 20px;
+`;
+
+const Title = styled.h3`
+  margin-bottom: 30px;
+`;
+
+const List = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const ListItem = styled.li`
+  width: 50%;
+  margin-bottom: 10px;
+`;
+
+const Right = styled.div`
+  flex: 1;
+  padding: 20px;
+`;
+
+const ContactItem = styled.div`
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+`;
+
+const Payment = styled.img`
+  width: 50%;
+`;
+
+const Footer = () => {
   return (
     <div>
-      <footer class="w-100 py-4 flex-shrink-0">
-        <div class="container py-4">
-          <div class="row gy-4 gx-5">
-            <div class="col-lg-4 col-md-6">
-              <h5 class="h1 text-white">FPASSIONN.</h5>
-              <p class="small text-white">Fashion is our Passion.</p>
-              <p class="small text-white mb-0">
-                &copy; Copyrights.{today} All rights reserved.{" "}
-              </p>
-            </div>
-            <div class="col-lg-2 col-md-6">
-              <h5 class="text-white mb-3">Quick links</h5>
-              <ul class="list-unstyled text-muted">
-                <li>
-                  <a className="link-light" href="#">
-                    Products
-                  </a>
-                </li>
-                <li>
-                  <a className="link-light" href="#">
-                    Contacts
-                  </a>
-                </li>
-                <li>
-                  <a className="link-light" href="#">
-                    About{" "}
-                  </a>
-                </li>
-                <li>
-                  <a className="link-light" href="#">
-                    FAQ
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-2 col-md-6">
-              <h5 class="text-white mb-3">Quick links</h5>
-              <ul class="list-unstyled ">
-                <li>
-                  <a className="link-light" href="#">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a className="link-light" href="#">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a className="link-light" href="#">
-                    Get started
-                  </a>
-                </li>
-                <li>
-                  <a className="link-light" href="#">
-                    FAQ
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-2 col-md-6">
-              <h5 class="text-white mb-3">Follow us on</h5>
-              <ul class="list-unstyled text-muted">
-                <li>
-                  <a className="link-light" href="#">
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a className="link-light" href="#">
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a className="link-light" href="#">
-                    Twitter
-                  </a>
-                </li>
-                <li>
-                  <a className="link-light" href="#">
-                    LinkedIn
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="col-lg-2 col-md-6"></div>
-          </div>
-        </div>
-      </footer>
+      <Container>
+        <Left>
+          <Logo>FNPASSION.</Logo>
+          <Desc>
+            The web visitors will come to this page becouse they passionate
+            about their fashion. is'nt it?
+          </Desc>
+          {/* <SocialContainer>
+          <SocialIcon color="3B5999">
+            <Facebook />
+          </SocialIcon>
+          <SocialIcon color="E4405F">
+            <Instagram />
+          </SocialIcon>
+          <SocialIcon color="55ACEE">
+            <Twitter />
+          </SocialIcon>
+          <SocialIcon color="E60023">
+            <Pinterest />
+          </SocialIcon>
+        </SocialContainer> */}
+        </Left>
+        <Center>
+          <Title>Useful Links</Title>
+          <List>
+            <ListItem>Home</ListItem>
+            <ListItem>Cart</ListItem>
+            <ListItem>Man Fashion</ListItem>
+            <ListItem>Woman Fashion</ListItem>
+            <ListItem>Accessories</ListItem>
+            <ListItem>My Account</ListItem>
+            <ListItem>Order Tracking</ListItem>
+            <ListItem>Wishlist</ListItem>
+            <ListItem>Wishlist</ListItem>
+            <ListItem>Terms</ListItem>
+          </List>
+        </Center>
+        <Right>
+          <Title>Contact</Title>
+          <ContactItem>
+            {/* <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South */}
+            Tobinchester 98336
+          </ContactItem>
+          <ContactItem>
+            {/* <Phone style={{ marginRight: "10px" }} /> +1 234 56 78 */}
+          </ContactItem>
+          <ContactItem>
+            {/* <MailOutline style={{ marginRight: "10px" }} /> contact@lama.dev */}
+          </ContactItem>
+          <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+        </Right>
+      </Container>
+      <center>
+        <h5>Copyright &copy; {thisYear} </h5>
+      </center>
     </div>
   );
 };

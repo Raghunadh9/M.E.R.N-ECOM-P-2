@@ -1,0 +1,65 @@
+.Product_Card_Home {
+  width: 14vmax;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+  margin: 2vmax;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+  border: 1px solid black;
+}
+.container_home {
+  display: flex;
+  margin: 2vmax auto;
+  width: 80vw;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.Product_Card_Home > img {
+  width: 14vmax;
+}
+.Product_Card_Home > div {
+  margin: 0.5vmax;
+  display: flex;
+  justify-content: flex-start;
+}
+.Product_Card_Home > div > span {
+  margin-top: 0.8vmax;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+.Product_Card_Home > p {
+  font-family: "Urbanist";
+  font-size: 1.2vmax;
+  margin: 1vmax 0.5vmax;
+  margin-bottom: 0;
+}
+.Product_Card_Home > span {
+  margin: 0.5vmax;
+  color: tomato;
+  font-family: "Urbanist";
+  font-weight: 800;
+  font-size: 1vmax;
+}
+.Product_Card_Home:hover {
+  box-shadow: 0 0 5px black;
+  transform: translateY(-1vmax);
+}
+@media screen and (max-width: 600px) {
+  .Product_Card_Home > p {
+    font-size: 1.7vmax;
+  }
+  .Product_Card_Home > div {
+    margin: 0vmax;
+    display: block;
+  }
+  .Product_Card_Home > span {
+    font-size: 1.5vmax;
+  }
+  .Product_Card_Home > div > span {
+    margin: 0 0 0.5vmax;
+    font: 300 1vmax "Roboto";
+  }
+}

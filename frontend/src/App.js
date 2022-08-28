@@ -4,7 +4,6 @@ import Footer from "./Components/Footer/Footer.jsx";
 import WebFont from "webfontloader";
 import Home from "./Components/Home/Home.jsx";
 import { Routes, Route } from "react-router-dom";
-
 const App = () => {
   React.useEffect(() => {
     WebFont.load({

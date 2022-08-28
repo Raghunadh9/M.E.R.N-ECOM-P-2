@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="navbar_wrapper text-decoration-none">
           <div className="navbar_left text-decoration-none">
             <NavLink className="brand_navbar" to="/">
-              <h1 className="text-decoration-none">FPASSIONN.</h1>
+              <h1 className="text-decoration-none">FNPASSION.</h1>
             </NavLink>
           </div>
           <div className="navbar_center text-decoration-none">
