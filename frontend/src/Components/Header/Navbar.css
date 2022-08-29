@@ -42,9 +42,7 @@
 .navbar_menuItem:hover {
   border-bottom: 2px solid darkblue;
 }
-.nav_ac {
-  background-color: black;
-}
+
 .icon_className {
   color: black;
 }

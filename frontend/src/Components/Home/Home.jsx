@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "../Slider/Slider";
 import "./Home.css";
 import Product from "./Product.js";
 import MetaData from "../layout/MetaData";
+import { getProduct } from "../../actions/productAction";
+import { useSelector, useDispatch } from "react-redux";
+
+const product = {
+  name: "Blue t-Shirt",
+  price: "₹3000",
+  _id: "abhishek",
+  images: [{ url: "https://i.ibb.co/DRST11n/1.webp" }],
+};
 
 const Home = () => {
-  const product = {
-    name: "Blue t-Shirt",
-    price: "₹3000",
-    _id: "abhishek",
-    images: [{ url: "https://i.ibb.co/DRST11n/1.webp" }],
-  };
+  const dispatch = useDispatch();
+  const {} = useSelector((state) => state.products);
+  useEffect(() => {
+    dispatch(getProduct());
+  }, [dispatch]);
+
   return (
     <div>
       <MetaData title="FNPASSION." />

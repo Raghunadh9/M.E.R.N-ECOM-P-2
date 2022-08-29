@@ -2,8 +2,9 @@ import React from "react";
 import Navbar from "./Components/Header/Navbar";
 import Footer from "./Components/Footer/Footer.jsx";
 import WebFont from "webfontloader";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Home from "./Components/Home/Home.jsx";
-import { Routes, Route } from "react-router-dom";
 const App = () => {
   React.useEffect(() => {
     WebFont.load({
@@ -14,11 +15,13 @@ const App = () => {
   }, []);
   return (
     <div>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Footer />
+      <Router>
+        <Navbar />
+
+        <Route exact path="/" component={Home} />
+
+        <Footer />
+      </Router>
     </div>
   );
 };
