@@ -1,40 +1,42 @@
 import React, { useEffect } from "react";
 import Slider from "../Slider/Slider";
 import "./Home.css";
+import "react-toastify/dist/ReactToastify.css";
 import Product from "./Product.js";
 import MetaData from "../layout/MetaData";
 import { getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
-
-const product = {
-  name: "Blue t-Shirt",
-  price: "₹3000",
-  _id: "abhishek",
-  images: [{ url: "https://i.ibb.co/DRST11n/1.webp" }],
-};
-
+import Loader from "../Loader/Loader";
+import { useAlert } from "react-alert";
 const Home = () => {
+  const alert = useAlert();
   const dispatch = useDispatch();
-  const {} = useSelector((state) => state.products);
+  const { loading, products, productsCount, error } = useSelector(
+    (state) => state.products
+  );
   useEffect(() => {
+    if (error) {
+      return console.log("err:" + error);
+    }
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   return (
     <div>
-      <MetaData title="FNPASSION." />
-      <Slider />
-      <h2 className="homeHeading">Featured Products.</h2>
-      <div className="container_home" id="container_home">
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          <MetaData title="FNPASSION." />
+          <Slider />
+
+          <h2 className="homeHeading">Featured Products.</h2>
+          <div className="container_home" id="container_home">
+            {products &&
+              products.map((product) => <Product product={product} />)}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
