@@ -3,6 +3,7 @@ import Navbar from "./Components/Header/Navbar";
 import Footer from "./Components/Footer/Footer.jsx";
 import WebFont from "webfontloader";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import ProductDetails from "./Components/Product/ProductDetails.js";
 
 import Home from "./Components/Home/Home.jsx";
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Navbar />
 
         <Route exact path="/" component={Home} />
+        <Route exact path="/product/:id" component={ProductDetails} />
 
         <Footer />
       </Router>

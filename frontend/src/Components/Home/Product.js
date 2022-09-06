@@ -13,7 +13,7 @@ const Product = ({ product }) => {
     size: window.innerWidth < 600 ? 25 : 20,
   };
   return (
-    <Link to={product._id} className="Product_Card_Home">
+    <Link className="Product_Card_Home" to={`/product/${product._id}`}>
       <img src={product.images[0].url} alt={product.name} />
       <p>{product.name}</p>
       <div className="">
