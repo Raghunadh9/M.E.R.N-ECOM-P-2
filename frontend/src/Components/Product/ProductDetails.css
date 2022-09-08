@@ -1,0 +1,9 @@
+.ProductDetails {
+  width: 100vw;
+  padding-top: 35px;
+  padding-left: 50px;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+}
