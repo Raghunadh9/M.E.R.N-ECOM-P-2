@@ -1,9 +1,7 @@
-//iam at 6:09:51
-
 import React, { useEffect, Fragment } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
-import ReactStars from "react-rating-stars-component";
+import Button from "@mui/material/Button";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../actions/productAction";
@@ -16,14 +14,7 @@ const ProductDetails = ({ match }) => {
   useEffect(() => {
     dispatch(getProductDetails(match.params.id));
   }, [dispatch, match.params.id]);
-  const options = {
-    edit: false,
-    color: "rgba(20,20,20,0.1)",
-    activeColor: "tomato",
-    value: product.ratings,
-    isHalf: true,
-    size: window.innerWidth < 600 ? 25 : 20,
-  };
+
   return (
     <Fragment>
       <div className="ProductDetails">
@@ -41,19 +32,23 @@ const ProductDetails = ({ match }) => {
               ))}
           </Carousel>
         </div>
-        <div className="">
+        <div className="full_product_details">
           <div className="detailsBlock-1">
             <h2>{product.name}</h2>
             <p>#id: {product._id}</p>
           </div>
+          <div className="detailsBlock-4">
+            <h4 style={{ letterSpacing: "1px" }}>{product.description}</h4>
+          </div>
           <div className="detailsBlock-2">
-            <ReactStars {...options} />
-            <span>({product.numOfReviews} Reviews.)</span>
+            <span className="ProductDetails_raings">
+              {product.ratings} ★ | {product.numOfReviews} Ratings
+            </span>
           </div>
           <div className="detailsBlock-3">
-            <h1>{`₹ ${product.price}`}</h1>
-            <div className="detailsBlock-3.1">
-              <div className="detailsBlock-3.1.1">
+            <h2>{`₹ ${product.price}`}</h2>
+            <div className="detailsBlock-3-1">
+              <div className="detailsBlock-3-1-1">
                 <button>-</button>
                 <input type="number" value={1} />
                 <button>+</button>
@@ -68,9 +63,7 @@ const ProductDetails = ({ match }) => {
               </b>
             </p>
           </div>
-          <div className="detailsBlock-4">
-            Description: <p>{product.description}</p>
-          </div>
+
           <button className="submitReview">Submit Review</button>
         </div>
       </div>

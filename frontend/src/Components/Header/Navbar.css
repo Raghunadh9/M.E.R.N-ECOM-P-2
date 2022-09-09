@@ -7,16 +7,20 @@
 .navbar_container {
   height: 60px;
   text-decoration: none;
+  background-color: white;
+  color: #007c00;
 }
 .navbar_wrapper {
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   text-decoration: none;
+  color: #007c00;
 }
 .navbar_left {
   flex: 1;
   cursor: pointer;
+  color: #007c00;
 }
 .navbar_center {
   flex: 2;
@@ -24,28 +28,30 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  color: #007c00;
 }
 .navbar_right {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  color: #007c00;
 }
 .navbar_menuItem {
   font-style: 14px;
   cursor: pointer;
   margin-left: 25px;
-  color: black;
+  color: #007c00;
   text-decoration: none;
   list-style: none;
 }
 .navbar_menuItem:hover {
-  border-bottom: 2px solid darkblue;
+  border-bottom: 2px solid white;
 }
 
 .icon_className {
-  color: black;
+  color: #007c00;
 }
 .brand_navbar {
-  color: black;
+  color: #007c00;
 }
