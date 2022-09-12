@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
-import Button from "@mui/material/Button";
+import ReviewCard from "./ReviewCard.js";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../actions/productAction";
@@ -66,6 +66,16 @@ const ProductDetails = ({ match }) => {
 
           <button className="submitReview">Submit Review</button>
         </div>
+      </div>
+      <div className="submitReviews">
+        {product.reviews && product.reviews[0] ? (
+          <div className="reviews">
+            {product.reviews &&
+              product.reviews.map((review) => <ReviewCard review={review} />)}
+          </div>
+        ) : (
+          <p className="noReviews">No Reviews Yet</p>
+        )}
       </div>
     </Fragment>
   );
