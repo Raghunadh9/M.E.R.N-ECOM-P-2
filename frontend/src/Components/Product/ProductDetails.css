@@ -123,16 +123,59 @@
   outline: none;
   margin-left: 3px;
 }
+.reviews {
+  display: flex;
+  overflow: auto;
+}
 
+.reviewsHeading {
+  font: 500 2vmax;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  padding: 1vmax;
+  width: 20vmax;
+  margin: auto;
+  margin-bottom: 4vmax;
+}
+.noReviews {
+  font: 400 2vmax;
+  text-align: center;
+}
+.reviewCard {
+  flex: none;
+  box-shadow: 0 0 5px black;
+  border: 1px solid black;
+  width: 30vmax;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1vmax;
+  padding: 3vmax;
+}
+.reviewCard > p {
+  color: black;
+  font: 600 0.9vmax;
+}
+.reviewCard > span {
+  color: black;
+  font: 400 0.9vmax;
+}
 @media screen and (max-width: 600px) {
   .ProductDetails {
     flex-direction: column;
     height: unset;
     align-items: center;
+    /* margin-right: 50px; */
+  }
+  .ProductDetails_img_container {
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
   }
 
   .ProductDetails > div:last-child {
     align-items: center;
+    margin-right: 50px;
   }
 
   .detailsBlock-1 > h2 {
