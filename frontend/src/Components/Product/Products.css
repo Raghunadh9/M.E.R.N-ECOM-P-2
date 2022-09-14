@@ -1,0 +1,58 @@
+.productsHeading {
+  margin: 2vmax auto;
+  width: 30vw;
+  border-bottom: 1px solid #000;
+  padding: 2vmax;
+  font: 500 1.5vmax;
+  text-align: center;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 5vmax;
+  justify-content: center;
+}
+.paginationBox {
+  display: flex;
+  justify-content: center;
+  margin: 6vmax;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 0;
+}
+.page-item {
+  background-color: #057914;
+
+  list-style: none;
+  border: 1px solid black;
+  padding: 1vmax 2vmax;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.page-item :first-child {
+  border-radius: 5px 0 0 5px;
+}
+.page-item :last-child {
+  border-radius: 0px 5px 5px 0px;
+}
+.page-link {
+  text-decoration: none;
+  font: 300 0.7vmax;
+  color: white;
+  transition: all 0.3s;
+}
+.page-item:hover {
+  background-color: white;
+}
+.page-item:hover .page-link {
+  color: #057914;
+}
+.pageItemActive {
+  background-color: #fff;
+}
+.pageLinkActive {
+  color: #057914;
+}
