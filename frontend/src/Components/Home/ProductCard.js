@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
-    activeColor: "tomato",
+    activeColor: "green",
     value: product.ratings,
     isHalf: true,
     size: window.innerWidth < 600 ? 25 : 20,
@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
         <br />
         <span>({product.numOfReviews} Reviews)</span>
       </div>
-      <span>{`₹${product.price}`}</span>
+      <span style={{ color: "green" }}>{`₹${product.price}`}</span>
     </Link>
   );
 };

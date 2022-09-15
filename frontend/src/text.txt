@@ -1,1 +1,3 @@
-iam at 7:00:00--9/14/22
+iam at 7:28:00--9/14/22
+
+at 7:20:00 to 7:28:00 we are facing the problem with ratings in url and that code existed in productAction.js

@@ -4,25 +4,53 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../Loader/Loader";
 import ProductCard from "../Home/ProductCard";
+import MetaData from "../layout/MetaData";
+
+import { useAlert } from "react-alert";
 import Pagination from "react-js-pagination";
+import Slider from "@material-ui/core/Slider";
+import Typography from "@material-ui/core/Typography";
+const categories = [
+  "Laptops",
+  "Footwear",
+  "Bottom",
+  "Tops",
+  "Attire",
+  "Camera",
+  "Smartphones",
+];
 const Products = ({ match }) => {
   const dispatch = useDispatch();
+  const alert = useAlert();
+
   const [currentPage, setCurrentPage] = useState(1);
+  const [price, setPrice] = useState([0, 25000]);
+  const [category, setCategory] = useState("");
+  const [ratings, setRatings] = useState(0);
   const { products, loading, error, productsCount, resultPerPage } =
     useSelector((state) => state.products);
   const keyword = match.params.keyword;
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
   };
+  const priceHandler = (e, newPrice) => {
+    setPrice(newPrice);
+  };
   useEffect(() => {
-    dispatch(getProduct(keyword, currentPage));
-  }, [dispatch, keyword, currentPage]);
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getProduct(keyword, currentPage, price, category, ratings));
+  }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
+
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
+          <MetaData title="Products" />
           <h2 className="productsHeading">Products</h2>
           <div className="products">
             {products &&
@@ -30,6 +58,45 @@ const Products = ({ match }) => {
                 <ProductCard key={product._id} product={product} />
               ))}
           </div>
+          <div className="filterBox">
+            <center>
+              <Typography className="price_title">Price</Typography>
+              <Slider
+                value={price}
+                onChange={priceHandler}
+                valueLabelDisplay="on"
+                aria-labelledby="range-slider"
+                min={0}
+                max={25000}
+              />
+              <Typography className="price_title">Categories</Typography>
+            </center>
+            <ul className="catagoryBox">
+              {categories.map((category) => (
+                <li
+                  className="category-link"
+                  key={category}
+                  onClick={() => setCategory(category)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
+            <fieldset>
+              <Typography component="legend">Ratings Above</Typography>
+              <Slider
+                value={ratings}
+                onChange={(e, newRating) => {
+                  setRatings(newRating);
+                }}
+                aria-labelledby="continuos-slider"
+                valueLabelDisplay="auto"
+                min={0}
+                max={5}
+              ></Slider>
+            </fieldset>
+          </div>
+
           <div className="paginationBox">
             <Pagination
               activePage={currentPage}

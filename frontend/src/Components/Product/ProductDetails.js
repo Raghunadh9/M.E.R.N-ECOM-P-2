@@ -1,6 +1,8 @@
 import React, { useEffect, Fragment } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
+import MetaData from "../layout/MetaData";
+
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +28,8 @@ const ProductDetails = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
+          <MetaData title={`${product.name}`} />
+
           <div className="ProductDetails">
             <div className="ProductDetails_img_container">
               <Carousel>
