@@ -8,6 +8,8 @@ import Products from "./Components/Product/Products.js";
 import Home from "./Components/Home/Home.jsx";
 import Search from "./Components/Product/Search.js";
 import LoginSignup from "./Components/User/LoginSignup";
+import Store from "./Store.js";
+import { loadUser } from "./actions/userAction";
 const App = () => {
   React.useEffect(() => {
     WebFont.load({
@@ -15,6 +17,7 @@ const App = () => {
         families: ["Urbanist", "Droid Sans", "Chilanka"],
       },
     });
+    Store.dispatch(loadUser());
   }, []);
   return (
     <div>
