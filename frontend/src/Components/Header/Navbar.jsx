@@ -3,10 +3,38 @@ import { NavLink } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import SearchIcon from "@mui/icons-material/Search";
 import Person3Icon from "@mui/icons-material/Person3";
+import { useSelector } from "react-redux";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import PersonIcon from "@material-ui/icons/Person";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import ListAltIcon from "@material-ui/icons/ListAlt";
+import { useAlert } from "react-alert";
+import { logout } from "../../actions/userAction";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
+  const { isAuthenticated } = useSelector((state) => state.user);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const alert = useAlert();
+  function dashboard() {
+    history.push("/admin/dashboard");
+  }
+  function orders() {
+    history.push("/orders");
+  }
+  function account() {
+    history.push("/account");
+  }
+  function logoutUser() {
+    dispatch(logout());
+    alert.success("Logout Successfully");
+  }
   return (
     <div className="text-decoration-none">
       <div className="navbar_container text-decoration-none">
@@ -45,9 +73,50 @@ const Navbar = () => {
             </div>
 
             <div className="navbar_menuItem">
-              <NavLink className="icon_className" to="/Login">
-                <Person3Icon fontSize="medium" />
-              </NavLink>
+              {isAuthenticated ? (
+                <div class="dropdown">
+                  <a
+                    class="btn btn-success dropdown-toggle btn-sm"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <Person3Icon fontSize="medium" />
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <li onClick={account}>
+                      <a class="dropdown-item">
+                        <PersonIcon /> Account
+                      </a>
+                    </li>
+                    <li onClick={orders}>
+                      <a class="dropdown-item">
+                        <ListAltIcon /> Orders
+                      </a>
+                    </li>
+
+                    {user.role === "admin" ? (
+                      <li onClick={dashboard}>
+                        <a class="dropdown-item">
+                          <DashboardIcon /> Dashboard
+                        </a>
+                      </li>
+                    ) : null}
+
+                    <li onClick={logoutUser}>
+                      <a class="dropdown-item">
+                        <ExitToAppIcon /> Logout
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <NavLink className="icon_className" to="/Login">
+                  <Person3Icon fontSize="medium" />
+                </NavLink>
+              )}
             </div>
             <div className="navbar_menuItem">
               <NavLink className="icon_className" to="/Cart">
