@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
 import Badge from "@material-ui/core/Badge";
 import SearchIcon from "@mui/icons-material/Search";
 import Person3Icon from "@mui/icons-material/Person3";
@@ -18,12 +19,17 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import "./Navbar.css";
 
 const Navbar = ({ user }) => {
+  const { cartItems } = useSelector((state) => state.cart);
+
   const { isAuthenticated } = useSelector((state) => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
   const alert = useAlert();
   function dashboard() {
     history.push("/admin/dashboard");
+  }
+  function cart() {
+    history.push("/cart");
   }
   function orders() {
     history.push("/orders");
@@ -104,6 +110,16 @@ const Navbar = ({ user }) => {
                         </a>
                       </li>
                     ) : null}
+                    <li onClick={cart}>
+                      <a class="dropdown-item">
+                        <ShoppingCartOutlinedIcon fontSize="small" /> Cart
+                        &nbsp; &nbsp;
+                        <Badge
+                          badgeContent={cartItems.length}
+                          color="error"
+                        ></Badge>
+                      </a>
+                    </li>
 
                     <li onClick={logoutUser}>
                       <a class="dropdown-item">
@@ -120,7 +136,7 @@ const Navbar = ({ user }) => {
             </div>
             <div className="navbar_menuItem">
               <NavLink className="icon_className" to="/Cart">
-                <Badge badgeContent={4} color="error">
+                <Badge badgeContent={cartItems.length} color="error">
                   <ShoppingCartOutlinedIcon fontSize="medium" />
                 </Badge>
               </NavLink>

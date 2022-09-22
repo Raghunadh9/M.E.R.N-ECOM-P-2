@@ -1,8 +1,8 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, Fragment, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import MetaData from "../layout/MetaData";
-
+import { addItemsToCart } from "../../actions/cartAction";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,27 @@ const ProductDetails = ({ match }) => {
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
+  const [quantity, setQuantity] = useState(1);
+  const increaseQuantity = () => {
+    if (product.Stock <= quantity) return;
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
+  const decreaseQuantity = () => {
+    if (1 >= quantity) return;
+    const qty = quantity - 1;
+    setQuantity(qty);
+  };
+
+  const addToCartHandler = () => {
+    try {
+      dispatch(addItemsToCart(match.params.id, quantity));
+      alert.success("Item Added To Cart");
+    } catch (error) {
+      alert.error(error);
+    }
+  };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -62,17 +83,21 @@ const ProductDetails = ({ match }) => {
                 <h2>{`₹ ${product.price}`}</h2>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button>-</button>
-                    <input type="number" value={1} />
-                    <button>+</button>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input readOnly type="number" value={quantity} />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button>Add to Cart</button>
+                  <button onClick={addToCartHandler}>Add to Cart</button>
                 </div>
 
                 <p>
                   Status:
                   <b className={product.Stock < 1 ? "red" : "green"}>
                     {product.Stock < 1 ? "Out of Stock" : "In Stock"}
+                    <br />
+                    {product.Stock < 1 ? null : (
+                      <b>Only {product.Stock} left.Hurryup!</b>
+                    )}
                   </b>
                 </p>
               </div>

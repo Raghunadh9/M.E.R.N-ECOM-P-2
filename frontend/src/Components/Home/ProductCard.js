@@ -14,7 +14,12 @@ const ProductCard = ({ product }) => {
   };
   return (
     <Link className="Product_Card_Home" to={`/product/${product._id}`}>
-      <img src={product.images[0].url} alt={product.name} />
+      <img
+        src={product.images[0].url}
+        alt={product.name}
+        height="270px"
+        width="1000px"
+      />
       <p>{product.name}</p>
       <div className="">
         <ReactStars {...options} />

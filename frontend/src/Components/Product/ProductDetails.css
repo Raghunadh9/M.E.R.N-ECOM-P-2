@@ -1,4 +1,15 @@
-/* Iam at 6:19:22 */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .ProductDetails {
   border-top: 1px solid rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
@@ -72,7 +83,7 @@
 }
 .detailsBlock-3-1-1 > input {
   border: none;
-  width: 1vmax;
+  width: 4vmax;
   padding: 0.5vmax;
   text-align: center;
   outline: none;
@@ -218,7 +229,7 @@
   }
 
   .detailsBlock-3-1-1 > input {
-    padding: 2vmax;
+    padding: 5vmax;
     width: 3vmax;
     font: 400 1.8vmax "Roboto";
   }

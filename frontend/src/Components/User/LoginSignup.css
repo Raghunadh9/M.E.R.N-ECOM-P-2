@@ -5,9 +5,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
-
-  /* position: fixed; */
   background-image: url("https://thumbs.dreamstime.com/b/abstract-background-green-white-color-paper-cut-shapes-d-art-style-design-layout-business-presentations-flyers-195656561.jpg");
   background-size: cover; /* <------ */
   background-repeat: no-repeat;
