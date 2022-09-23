@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Components/Header/Navbar";
 import Footer from "./Components/Footer/Footer.jsx";
 import WebFont from "webfontloader";
@@ -19,16 +19,30 @@ import ForgotPassword from "./Components/User/ForgotPassword.js";
 import ResetPassword from "./Components/User/ResetPassword.js";
 import Cart from "./Components/Cart/Cart.js";
 import Shipping from "./Components/Shipping/Shipping.js";
-
+import ConfimOrder from "./Components/Cart/ConfimOrder.js";
+import Payment from "./Components/Cart/Payment.js";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccess from "./Components/Cart/OrderSuccess.js";
+import MyOrders from "./Components/Order/MyOrders.js";
+import OrderDetails from "./Components/Order/OrderDetails.js";
+import axios from "axios";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  React.useEffect(() => {
+  const [stripeApiKey, setStripeApiKey] = useState("");
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+    setStripeApiKey(data.stripeApiKey);
+  }
+
+  useEffect(() => {
     WebFont.load({
       google: {
         families: ["Urbanist", "Droid Sans", "Chilanka"],
       },
     });
     Store.dispatch(loadUser());
+    getStripeApiKey();
   }, []);
   return (
     <div>
@@ -52,6 +66,15 @@ const App = () => {
         <Route exact path="/Login" component={LoginSignup} />
         <Route exact path="/Cart" component={Cart} />
         <ProtectedRoute exact path="/shipping" component={Shipping} />
+        <ProtectedRoute exact path="/order/confirm" component={ConfimOrder} />
+        {stripeApiKey && (
+          <Elements stripe={loadStripe(stripeApiKey)}>
+            <ProtectedRoute exact path="/process/payment" component={Payment} />
+          </Elements>
+        )}
+        <ProtectedRoute exact path="/success" component={OrderSuccess} />
+        <ProtectedRoute exact path="/orders" component={MyOrders} />
+        <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
 
         <Footer />
       </Router>

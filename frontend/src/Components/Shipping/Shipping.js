@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import "./Shipping.css";
 import { useSelector, useDispatch } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartAction";
 import MetaData from "../layout/MetaData";
@@ -12,43 +13,47 @@ import { Country, State } from "country-state-city";
 import { useAlert } from "react-alert";
 import CheckoutSteps from "../Cart/CheckoutSteps";
 
-import "./Shipping.css";
-
 const Shipping = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { shippingInfo } = useSelector((state) => state.cart);
+
   const [address, setAddress] = useState(shippingInfo.address);
   const [city, setCity] = useState(shippingInfo.city);
   const [state, setState] = useState(shippingInfo.state);
   const [country, setCountry] = useState(shippingInfo.country);
-  const [pincode, setPincode] = useState(shippingInfo.pincode);
+  const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+
   const shippingSubmit = (e) => {
     e.preventDefault();
+
     if (phoneNo.length < 10 || phoneNo.length > 10) {
-      alert.error("Phone number should 10 digits long");
+      alert.error("Phone Number should be 10 digits Long");
       return;
     }
     dispatch(
-      saveShippingInfo({ address, city, state, country, pincode, phoneNo })
+      saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
     );
     history.push("/order/confirm");
   };
+
   return (
     <Fragment>
       <MetaData title="Shipping Details" />
+
       <CheckoutSteps activeStep={0} />
 
       <div className="shippingContainer">
         <div className="shippingBox">
           <h2 className="shippingHeading">Shipping Details</h2>
+
           <form
             className="shippingForm"
-            onSubmit={shippingSubmit}
             encType="multipart/form-data"
+            onSubmit={shippingSubmit}
           >
-            <div className="">
+            <div>
               <HomeIcon />
               <input
                 type="text"
@@ -58,7 +63,8 @@ const Shipping = ({ history }) => {
                 onChange={(e) => setAddress(e.target.value)}
               />
             </div>
-            <div className="">
+
+            <div>
               <LocationCityIcon />
               <input
                 type="text"
@@ -68,17 +74,19 @@ const Shipping = ({ history }) => {
                 onChange={(e) => setCity(e.target.value)}
               />
             </div>
-            <div className="">
+
+            <div>
               <PinDropIcon />
               <input
                 type="number"
                 placeholder="Pin Code"
                 required
-                value={pincode}
-                onChange={(e) => setPincode(e.target.value)}
+                value={pinCode}
+                onChange={(e) => setPinCode(e.target.value)}
               />
             </div>
-            <div className="">
+
+            <div>
               <PhoneIcon />
               <input
                 type="number"
@@ -89,10 +97,12 @@ const Shipping = ({ history }) => {
                 size="10"
               />
             </div>
-            <div className="">
+
+            <div>
               <PublicIcon />
+
               <select
-                name=""
+                required
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
               >
@@ -105,9 +115,11 @@ const Shipping = ({ history }) => {
                   ))}
               </select>
             </div>
+
             {country && (
-              <div className="">
+              <div>
                 <TransferWithinAStationIcon />
+
                 <select
                   required
                   value={state}
@@ -123,6 +135,7 @@ const Shipping = ({ history }) => {
                 </select>
               </div>
             )}
+
             <input
               type="submit"
               value="Continue"
