@@ -31,10 +31,14 @@ const OrderDetails = ({ match }) => {
           <MetaData title="Order Details" />
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
-              <Typography component="h1">
-                <b> Order :#{order && order._id}</b>
+              <Typography>
+                <h1>
+                  <b> Order :#{order && order._id}</b>
+                </h1>
               </Typography>
-              <Typography>Shipping Info</Typography>
+              <Typography>
+                <b>Shipping Info :</b>{" "}
+              </Typography>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p>

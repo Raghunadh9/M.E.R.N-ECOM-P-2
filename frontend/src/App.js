@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Components/Header/Navbar";
 import Footer from "./Components/Footer/Footer.jsx";
 import WebFont from "webfontloader";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ProductDetails from "./Components/Product/ProductDetails.js";
 import Products from "./Components/Product/Products.js";
 import Home from "./Components/Home/Home.jsx";
@@ -26,6 +26,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./Components/Cart/OrderSuccess.js";
 import MyOrders from "./Components/Order/MyOrders.js";
 import OrderDetails from "./Components/Order/OrderDetails.js";
+import Dashboard from "./Components/admin/Dashboard.js";
+import ProductList from "./Components/admin/ProductList.js";
 import axios from "axios";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -66,7 +68,6 @@ const App = () => {
         <Route exact path="/Login" component={LoginSignup} />
         <Route exact path="/Cart" component={Cart} />
         <ProtectedRoute exact path="/shipping" component={Shipping} />
-        <ProtectedRoute exact path="/order/confirm" component={ConfimOrder} />
         {stripeApiKey && (
           <Elements stripe={loadStripe(stripeApiKey)}>
             <ProtectedRoute exact path="/process/payment" component={Payment} />
@@ -74,8 +75,22 @@ const App = () => {
         )}
         <ProtectedRoute exact path="/success" component={OrderSuccess} />
         <ProtectedRoute exact path="/orders" component={MyOrders} />
-        <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
-
+        <Switch>
+          <ProtectedRoute exact path="/order/confirm" component={ConfimOrder} />
+          <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
+        </Switch>
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/dashboard"
+          component={Dashboard}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/products"
+          component={ProductList}
+        />
         <Footer />
       </Router>
     </div>
