@@ -14,7 +14,7 @@
 
 .dashboardContainer > h1 {
   color: rgba(0, 0, 0, 0.733);
-  font: 300 2rem "Roboto";
+  font: 300 2rem;
   text-align: center;
   width: 50%;
   padding: 1.5rem;
@@ -33,7 +33,7 @@
 .dashboardSummary > div > p {
   background-color: green;
   color: white;
-  font: 300 1.3rem "Roboto";
+  font: 300 1.3rem;
   text-align: center;
   padding: 1.5rem;
   width: 100%;

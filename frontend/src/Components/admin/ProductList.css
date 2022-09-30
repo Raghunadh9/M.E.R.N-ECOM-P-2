@@ -7,6 +7,12 @@
   flex-direction: column;
   height: 100vh;
 }
+.greenColor {
+  color: green;
+}
+.redColor {
+  color: red;
+}
 
 #productListHeading {
   font: 400 2rem;

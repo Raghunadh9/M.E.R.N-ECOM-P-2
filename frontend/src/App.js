@@ -28,7 +28,11 @@ import MyOrders from "./Components/Order/MyOrders.js";
 import OrderDetails from "./Components/Order/OrderDetails.js";
 import Dashboard from "./Components/admin/Dashboard.js";
 import ProductList from "./Components/admin/ProductList.js";
+import NewProduct from "./Components/admin/newProduct.js";
+import UpdateProduct from "./Components/admin/updateProduct.js";
 import axios from "axios";
+import OrderList from "./Components/admin/orderList";
+import ProcessOrder from "./Components/admin/processOrder";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -90,6 +94,30 @@ const App = () => {
           exact
           path="/admin/products"
           component={ProductList}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/product"
+          component={NewProduct}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/product/:id"
+          component={UpdateProduct}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/orders"
+          component={OrderList}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/order/:id"
+          component={ProcessOrder}
         />
         <Footer />
       </Router>

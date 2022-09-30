@@ -23,7 +23,7 @@ const MyOrders = () => {
     dispatch(myOrders());
   }, [dispatch, alert, error]);
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "id", headerName: "Order ID", minWidth: 100, flex: 0.5 },
 
     {
       field: "status",
@@ -48,7 +48,7 @@ const MyOrders = () => {
       field: "amount",
       headerName: "Amount",
       type: "number",
-      minWidth: 270,
+      minWidth: 200,
       flex: 0.3,
     },
 
@@ -87,6 +87,11 @@ const MyOrders = () => {
         <Loader />
       ) : (
         <div className="myOrdersPage">
+          <center>
+            <h1 style={{ borderBottom: "2px solid green" }}>
+              {user.name} - Orders
+            </h1>
+          </center>
           <DataGrid
             rows={rows}
             columns={columns}

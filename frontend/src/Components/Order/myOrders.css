@@ -26,12 +26,12 @@
 
 .myOrdersTable div {
   font: 300 1vmax;
-  color: rgba(0, 0, 0, 0.678);
+  color: black;
   border: none;
 }
 
 .myOrdersTable a {
-  color: rgba(0, 0, 0, 0.527);
+  color: black;
   transition: all 0.5s;
 }
 
