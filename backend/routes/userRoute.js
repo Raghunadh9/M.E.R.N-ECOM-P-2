@@ -4,7 +4,6 @@ const {
   loginUser,
   logout,
   resetPassword,
-
   forgotPassword,
   getUserDetails,
   updatePassword,
