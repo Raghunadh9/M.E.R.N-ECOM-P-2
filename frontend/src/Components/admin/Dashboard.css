@@ -31,7 +31,7 @@
   justify-content: center;
 }
 .dashboardSummary > div > p {
-  background-color: green;
+  background-color: #06283d;
   color: white;
   font: 300 1.3rem;
   text-align: center;
@@ -44,7 +44,7 @@
   color: white;
   font: 300 2rem "Roboto";
   text-align: center;
-  background-color: #ff884b;
+  background-color: #47b5ff;
   text-decoration: none;
   padding: 7vmax;
   width: 10vmax;
@@ -58,11 +58,11 @@
 }
 
 .dashboardSummaryBox2 > a:first-child {
-  background-color: #ff577f;
+  background-color: #256d85;
 }
 
 .dashboardSummaryBox2 > a:last-child {
-  background-color: #ffd384;
+  background-color: #53656d;
 }
 
 .lineChart {

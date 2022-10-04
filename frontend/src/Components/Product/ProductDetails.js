@@ -110,9 +110,7 @@ const ProductDetails = ({ match }) => {
                 <h2>{product.name}</h2>
                 <p>#id: {product._id}</p>
               </div>
-              <div className="detailsBlock-4">
-                <h4 style={{ letterSpacing: "1px" }}>{product.description}</h4>
-              </div>
+
               <div className="detailsBlock-2">
                 <span className="ProductDetails_raings">
                   {product.ratings} ★ | {product.numOfReviews} Ratings
