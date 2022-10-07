@@ -1,14 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
 import Badge from "@material-ui/core/Badge";
 import SearchIcon from "@mui/icons-material/Search";
 import Person3Icon from "@mui/icons-material/Person3";
 import { useSelector } from "react-redux";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ListAltIcon from "@material-ui/icons/ListAlt";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { useAlert } from "react-alert";
 import { logout } from "../../actions/userAction";
 import { useDispatch } from "react-redux";
@@ -82,19 +81,19 @@ const Navbar = ({ user }) => {
               {isAuthenticated ? (
                 <div class="dropdown">
                   <a
-                    class="btn btn-success dropdown-toggle btn-sm"
+                    class="btn icon_className btn-sm"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <Person3Icon fontSize="medium" />
+                    <AccountCircleIcon fontSize="medium" />
                   </a>
 
                   <ul class="dropdown-menu">
                     <li onClick={account}>
                       <a class="dropdown-item">
-                        <PersonIcon /> Account
+                        <AccountCircleIcon /> Account
                       </a>
                     </li>
                     <li onClick={orders}>
@@ -130,13 +129,18 @@ const Navbar = ({ user }) => {
                 </div>
               ) : (
                 <NavLink className="icon_className" to="/Login">
-                  <Person3Icon fontSize="medium" />
+                  <AccountCircleIcon fontSize="medium" />
                 </NavLink>
               )}
             </div>
             <div className="navbar_menuItem">
               <NavLink className="icon_className" to="/Cart">
-                <Badge badgeContent={cartItems.length} color="error">
+                <Badge
+                  badgeContent={
+                    cartItems.length === null ? 0 : cartItems.length
+                  }
+                  color="error"
+                >
                   <ShoppingCartOutlinedIcon fontSize="medium" />
                 </Badge>
               </NavLink>

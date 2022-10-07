@@ -1,10 +1,12 @@
 .Product_Card_Home {
-  width: 14vmax;
+  width: 20vmax;
+
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: black;
   margin: 2vmax;
+  margin-left: 60px;
   transition: all 0.5s;
   padding-bottom: 0.5vmax;
 }
@@ -16,7 +18,8 @@
   justify-content: center;
 }
 .Product_Card_Home > img {
-  width: 14vmax;
+  width: auto;
+  height: 25vmax;
 }
 .Product_Card_Home > div {
   margin: 0.5vmax;

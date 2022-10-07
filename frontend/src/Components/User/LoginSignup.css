@@ -1,21 +1,26 @@
-.LoginSignupContainer {
+.LoginSignUpContainer {
   width: 100vw;
   height: 100vh;
   max-width: 100%;
   display: flex;
   justify-content: center;
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+
   align-items: center;
-  background-image: url("https://thumbs.dreamstime.com/b/abstract-background-green-white-color-paper-cut-shapes-d-art-style-design-layout-business-presentations-flyers-195656561.jpg");
-  background-size: cover; /* <------ */
-  background-repeat: no-repeat;
-  background-position: center center;
   top: 0%;
   left: 0;
 }
 
 .LoginSignUpBox {
   background-color: white;
-  border: 2px double black;
+  border: 2px double green;
+  border-radius: 10px;
   width: 25vw;
   height: 70vh;
   box-sizing: border-box;
@@ -27,7 +32,7 @@
 }
 .login_signUp_toggle > p {
   color: rgba(0, 0, 0, 0.678);
-  font: 300 1vmax "Roboto";
+  font: 300 1vmax;
   transition: all 0.5s;
   cursor: pointer;
   display: grid;
@@ -93,7 +98,7 @@
   text-decoration: none;
   align-self: flex-end;
   transition: all 0.5s;
-  font: 500 0.8vmax "Gill Sans";
+  font: 500 0.8vmax;
 }
 
 .loginForm > a:hover {
@@ -132,7 +137,7 @@
   border: none;
   background-color: green;
   color: white;
-  font: 300 0.9vmax "Roboto";
+  font: 300 0.9vmax;
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -144,9 +149,7 @@
 
 .loginBtn:hover,
 .signUpBtn:hover {
-  background-color: #fff;
-  color: green;
-  border: 1px solid green;
+  background-color: rgb(179, 66, 46);
 }
 
 .shiftToLeft {
@@ -176,7 +179,7 @@
     height: 5vmax;
   }
   .login_signUp_toggle > p {
-    font: 300 1.5vmax "Roboto";
+    font: 300 1.5vmax;
   }
 
   .loginForm,
@@ -196,7 +199,7 @@
   }
 
   .loginForm > a {
-    font: 500 1.8vmax "Gill Sans";
+    font: 500 1.8vmax;
   }
 
   #registerImage > img {
@@ -211,7 +214,7 @@
 
   .loginBtn,
   .signUpBtn {
-    font: 300 1.9vmax "Roboto";
+    font: 300 1.9vmax;
     padding: 1.8vmax;
   }
 }

@@ -6,6 +6,7 @@ import { addItemsToCart } from "../../actions/cartAction";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
+import ReactImageMagnify from "react-image-magnify";
 import {
   clearErrors,
   getProductDetails,
@@ -22,6 +23,8 @@ import {
 import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/productConstant";
 const ProductDetails = ({ match }) => {
+  const { isAuthenticated } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   const alert = useAlert();
   const { product, loading, error } = useSelector(
@@ -95,12 +98,19 @@ const ProductDetails = ({ match }) => {
               <Carousel>
                 {product.images &&
                   product.images.map((item, i) => (
-                    <img
-                      className="CarouselImage"
-                      key={item.url}
-                      src={item.url}
-                      alt={`${i} Slide`}
-                      width="800px"
+                    <ReactImageMagnify
+                      {...{
+                        smallImage: {
+                          alt: "..",
+                          isFluidWidth: true,
+                          src: item.url,
+                        },
+                        largeImage: {
+                          src: item.url,
+                          width: 1200,
+                          height: 1800,
+                        },
+                      }}
                     />
                   ))}
               </Carousel>
@@ -148,7 +158,11 @@ const ProductDetails = ({ match }) => {
                 <p>{product.description}</p>
               </div>
 
-              <button onClick={submitReviewToggle} className="submitReview">
+              <button
+                disabled={isAuthenticated ? false : true}
+                onClick={submitReviewToggle}
+                className="submitReview"
+              >
                 Submit Review
               </button>
             </div>

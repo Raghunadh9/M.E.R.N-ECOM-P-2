@@ -145,7 +145,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
   if (isReviewed) {
     product.reviews.forEach((rev) => {
       if (rev.user.toString() === req.user._id.toString())
-        (rev.rating = rating), (rev.comment = comment);
+        (rev.rating = rating.toFixed(2)), (rev.comment = comment);
     });
   } else {
     product.reviews.push(review);
@@ -158,7 +158,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
     avg += rev.rating;
   });
 
-  product.ratings = avg / product.reviews.length;
+  product.ratings = (avg / product.reviews.length).toFixed(2);
 
   await product.save({ validateBeforeSave: false });
 
